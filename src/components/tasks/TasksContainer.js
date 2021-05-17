@@ -16,11 +16,11 @@ export default class TasksContainer extends Component {
         this.viewTasksHandler = this.viewTasksHandler.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.deleteTask = this.deleteTask.bind(this);
+        // this.deleteTask = this.deleteTask.bind(this);
     };
 
     // deleteTask before was an arrow function. And arrow functions don't bind to the constructor, that's why I was getting an error
-    deleteTask(id) {
+    deleteTask = (id) => {
         this.setState((prevState) => {
             return {
                 ...prevState,
@@ -65,8 +65,9 @@ export default class TasksContainer extends Component {
                         return userTask.type === type ? 
                         <Task
                             key={userTask._id}
+                            id={userTask._id}
                             task={userTask.task}
-                            deleteTask={()=>this.deleteTask(userTask._id)} 
+                            deleteTask={this.deleteTask} 
                             editTask={()=>this.editTask(userTask)}
                         /> 
                         : null;
