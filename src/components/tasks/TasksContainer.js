@@ -32,6 +32,19 @@ export default class TasksContainer extends Component {
     // Edit Tasks
 
     // I won't bind this method to the constructor since it's an arrow function
+    editTask = (task) => {
+        this.setState({newTask: task, canEdit: true})
+    }
+
+    handleSubmittedEditedTask = () => {
+        this.setState(prevState => {
+            return{
+                ...prevState,
+                tasks: prevState.tasks.filter(task => task._id !== prevState.newTask._id),
+                canEdit: false
+            }
+        })
+    }
 
     handleCancel = () => {
         this.setState(prevState => {
