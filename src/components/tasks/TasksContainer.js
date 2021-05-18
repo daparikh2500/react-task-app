@@ -20,7 +20,7 @@ export default class TasksContainer extends Component {
     };
 
     // deleteTask before was an arrow function. And arrow functions don't bind to the constructor, that's why I was getting an error
-    deleteTask = (id) => {
+    deleteTask(id){
         this.setState((prevState) => {
             return {
                 ...prevState,
